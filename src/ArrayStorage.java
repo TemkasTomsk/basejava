@@ -4,7 +4,7 @@ import java.util.Arrays;
  * Array based storage for Resumes
  */
 public class ArrayStorage {
-    private Resume[] storage = new Resume[10000];
+    private Resume[] storage = new Resume[5];
     private int size = 0;
 
     void clear() {
@@ -29,9 +29,11 @@ public class ArrayStorage {
     void delete(String uuid) {
         for (int i = 0; i < size; i++) {
             if (uuid.equals(storage[i].uuid)) {
-                System.arraycopy(storage, i + 1, storage, i, size);
+                System.arraycopy(storage, i + 1, storage, i, size - 1);
                 storage[size - 1] = null;
                 size--;
+                System.out.println(Arrays.toString(storage));
+                break;
             }
         }
     }
